@@ -21,7 +21,7 @@ def main(*argv):
                         help='the algorithmn to protect images (only support fawkes for now)', default='fawkes')
     parser.add_argument('--key', '-k', type=str,
                         help='the key used to encrypt or decrypt images', default='key')
-    parser.add_argument('--clean', help='the algorithmn to protect images (only support fawkes for now)',
+    parser.add_argument('--clean', help='delete all generated files',
                         action='store_true')
     args = parser.parse_args()
     
