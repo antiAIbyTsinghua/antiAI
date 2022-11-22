@@ -107,7 +107,7 @@ def test(paths=r'images',method='fawkes',key=r'key',clean=False):
                 except:
                     print('cannot delete {}'.format(f))
             print('Clean done!')
-            print('Test finished!')
+        print('Test finished!')
 
 if __name__=='__main__':
     test(r'images','fawkes',r'key',True)
