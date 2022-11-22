@@ -26,12 +26,24 @@ Fawkes
 
 stego-lsb
 
+cryptography>=37.0.1
+
 # usage
 For the first time use, you can test it by:
 
     git clone https://github.com/antiAIbyTsinghua/antiAI
     cd antiAI
-    python main.py -d images -m fawkes --clean
+    python main.py -d images -m fawkes -k --clean
+
+To generate a new key:
+
+    python main.py
+
+To protect files with a certain key:
+
+    python main.py -d images -m fawkes -k 
+
+To recover files from cloaked files with a certain key:
 
 
 
