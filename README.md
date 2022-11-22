@@ -41,7 +41,7 @@ To generate a new key:
 
     python main.py --genkey
 
-We strongly recommend you keep the key carefully!
+We strongly recommend you keeping the key carefully!
 
 To protect files with a certain key:
 
