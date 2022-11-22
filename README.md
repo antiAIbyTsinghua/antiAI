@@ -4,31 +4,31 @@ antiAI can be used to protect images/audios/vidoes from AI recognition by multip
 antiAI is developed by researchers at [Department of Industial Engineering, Tsinghua University](https://www.ie.tsinghua.edu.cn/).
 
 # Requirements
-bleach>=2.1.0
+`bleach>=2.1.0`
 
-Click>=7.0
+`Click>=7.0`
 
-cryptography>=37.0.1
+`cryptography>=37.0.1`
 
-Fawkes
+`Fawkes`
 
-keras==2.4.3
+`keras==2.4.3`
 
-mtcnn
+`mtcnn`
 
-numpy>=1.15.4
+`numpy>=1.15.4`
 
-numpy>=1.19.5
+`numpy>=1.19.5`
 
-opencv-python>=4.6.0.66
+`opencv-python>=4.6.0.66`
 
-pillow>=7.0.0
+`pillow>=7.0.0`
 
-python_version>=3.8
+`python_version>=3.8`
 
-stego-lsb
+`stego-lsb`
 
-tensorflow==2.4.1
+`tensorflow==2.4.1`
 
 # Usage
 You can download it by:
