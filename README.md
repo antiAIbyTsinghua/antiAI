@@ -26,8 +26,8 @@ bleach>=2.1.0
 
     git clone https://github.com/antiAIbyTsinghua/antiAI
     cd antiAI
-    python main.py -m -d images -m fawkes
+    python main.py -d images -m fawkes
 
 Alternatively, you can test it by:
 
-    python main.py -m -d images -m fawkes --clean
+    python main.py -d images -m fawkes --clean
