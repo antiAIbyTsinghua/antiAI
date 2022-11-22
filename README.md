@@ -55,13 +55,13 @@ For the first time use, you can test it by:
 
     python main.py --test --clean
 
-When it finished, it will print test finished.
+When it finished, it will print `Test finished!`.
 
 To generate a new key:
 
     python main.py --genkey
 
-We strongly recommend you keeping the key carefully!
+We strongly recommend you to keep the key carefully!
 
 To protect files from AI recognitions and encrypt them with a certain key:
 
