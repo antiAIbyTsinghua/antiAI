@@ -6,11 +6,11 @@ antiAI is developed by researchers at [Department of Industial Engineering, Tsin
 # Requirements
 `bleach>=2.1.0`
 
-`Click>=7.0`
+`click>=7.0`
 
 `cryptography>=37.0.1`
 
-`Fawkes`
+`fawkes`
 
 `keras==2.4.3`
 
