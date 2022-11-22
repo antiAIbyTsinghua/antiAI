@@ -1,6 +1,8 @@
 # antiAI
 antiAI can be used to protect images/audios/vidoes from AI recognition by multiple algorithms. It only supports fawkes for now and will support more algorithms soon.
 
+antiAI is developed by researchers at [Department of Industial Engineering, Tsinghua University](https://www.ie.tsinghua.edu.cn/).
+
 # Requirements
 opencv-python>=4.6.0.66
 
