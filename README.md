@@ -22,6 +22,10 @@ pillow>=7.0.0
 
 bleach>=2.1.0
 
+Fawkes
+
+stego-lsb
+
 # usage
 
     git clone https://github.com/antiAIbyTsinghua/antiAI
