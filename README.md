@@ -30,12 +30,13 @@ antiAI is developed by researchers at [Department of Industial Engineering, Tsin
 
 `tensorflow==2.4.1`
 
-# Usage
+# Download
 You can download it by:
 
     git clone https://github.com/antiAIbyTsinghua/antiAI
     cd antiAI
 
+# Usage
 `$ python main.py`
 
 Options:
