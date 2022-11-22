@@ -1,5 +1,5 @@
 # antiAI
-antiAI can be used to protect images/audios/vidoes from AI recognition by multiple algorithms. It only supports fawkes for now and will support more algorithms soon.
+antiAI can be used to protect images/audios/vidoes from AI recognitions by multiple algorithms. It only supports fawkes for now and will support more algorithms soon.
 
 antiAI is developed by researchers at [Department of Industial Engineering, Tsinghua University](https://www.ie.tsinghua.edu.cn/).
 
@@ -63,13 +63,13 @@ To generate a new key:
 
 We strongly recommend you keeping the key carefully!
 
-To protect files with a certain key:
+To protect files from AI recognitions and encrypt them with a certain key:
 
     python main.py --protect -d images -m fawkes -k key
 
 To recover files from decrypted files with a certain key:
 
-    python main.py --recover -d images -m fawkes -k key
+    python main.py --recover -d images -k key
 
 If none of `--test`, `--genkey`, `--protect`, `--recover` is announced, both protection and recovery will be performed using an existing key. For example:
 
