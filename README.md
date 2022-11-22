@@ -51,7 +51,7 @@ To recover files from decrypted files with a certain key:
 
     python main.py --recover -d images -m fawkes -k key
 
-If none of test, genkey, protect, recover is announced, both protection and recovery will be performed using an existing key. For example:
+If none of `--test`, `--genkey`, `--protect`, `--recover` is announced, both protection and recovery will be performed using an existing key. For example:
 
     python main.py -d images -m fawkes -k key
 
