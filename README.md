@@ -41,6 +41,8 @@ To generate a new key:
 
     python main.py --genkey
 
+We strongly recommend you keep that key carefully!
+
 To protect files with a certain key:
 
     python main.py --protect -d images -m fawkes -k key
