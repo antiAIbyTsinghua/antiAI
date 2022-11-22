@@ -75,7 +75,7 @@ If none of `--test`, `--genkey`, `--protect`, `--recover` is announced, both pro
 
     python main.py -d images -m fawkes -k key
 
-You will get 3 new kinds of images. The images ended by _cloaked are the original files produced by antiAI algorithms. They seem similar to the original images but are difficult for AI to recognize. The images ended by _sealed are visually the same as the cloaked images, while the original images have been hiden in them. The images ended by _recovered are recovered images from the images ended by _sealed.
+You will get 3 kinds of generated images. The images ended by _cloaked are the original files produced by antiAI algorithms. They seem similar to the original images but are difficult for AI to recognize. The images ended by _sealed are visually the same as the cloaked images, while the original images have been hiden in them. The images ended by _recovered are recovered images from the images ended by _sealed.
 
 # Summary
 antiAI can help users protect their pravicy against AI recognitions. Users can save images ended by _sealed in their devices and can recover the original images whenever they want. An unauthorized visitor can only reach the cloaked images and will never reach the original images.
