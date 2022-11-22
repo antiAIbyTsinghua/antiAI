@@ -1,7 +1,7 @@
 # antiAI
 antiAI can be used to protect images/audios/vidoes from AI recognition by multiple algorithms. It only supports fawkes for now and will support more algorithms soon.
 
-# requirements
+# Requirements
 opencv-python>=4.6.0.66
 
 numpy>=1.15.4
@@ -28,11 +28,28 @@ stego-lsb
 
 cryptography>=37.0.1
 
-# usage
+# Usage
 For the first time use, you can test it by:
 
     git clone https://github.com/antiAIbyTsinghua/antiAI
     cd antiAI
+
+`$ python main.py`
+
+Options:
+
+* `--test`    : run a test demo.
+* `--genkey`  : generate a new key to encrypt or decrypt images.
+* `--protect` : protect images against AI.
+* `--recover` : recover images from decrypted images.
+* `-d`, `--directory` : the directory that contains images.
+* `-m`, `--method` : the algorithmn to protect images (only support fawkes for now).
+* `-k`, `--key` : the key used to encrypt or decrypt images.
+* `--clean`   : delete all generated files.
+
+# Examples:
+For the first time use, you can test it by:
+
     python main.py --test --clean
 
 When it finished, it will print test finished.
@@ -57,4 +74,5 @@ If none of `--test`, `--genkey`, `--protect`, `--recover` is announced, both pro
 
 You will get 3 new kinds of images. The images ended by _cloaked are the original files produced by antiAI algorithms. They seem similar to the original images but are difficult for AI to recognize. The images ended by _sealed are visually the same as the cloaked images, while the original images have been hiden in them. The images ended by _recovered are recovered images from the images ended by _sealed.
 
+# Summary
 antiAI can help users protect their pravicy against AI recognitions. Users can save images ended by _sealed in their devices and can recover the original images whenever they want. An unauthorized visitor can only reach the cloaked images and will never reach the original images.
