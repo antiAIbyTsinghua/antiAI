@@ -35,3 +35,7 @@ stego-lsb
 Alternatively, you can test it by:
 
     python main.py -d images -m fawkes --clean
+
+You will get 3 new kinds of images. The images ended by _cloaked are the original files produced by antiAI algorithms. They seem similar to the original images but are difficult for AI to recognize. The images ended by _sealed are visually the same as the cloaked images, while the original images have been hiden in them. The images ended by _recovered are revovered from the images ended by _sealed. 
+
+antiAI can help users protect their pravicy against AI recognitions. Users can save images ended by _sealed in their devices and can recover the original images whenever they want. An unauthorized visitor can only reach the cloaked images and will never reach the original images.
