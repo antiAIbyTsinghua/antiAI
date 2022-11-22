@@ -31,7 +31,7 @@ stego-lsb
 tensorflow==2.4.1
 
 # Usage
-For the first time use, you can download it by:
+You can download it by:
 
     git clone https://github.com/antiAIbyTsinghua/antiAI
     cd antiAI
