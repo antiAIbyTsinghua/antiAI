@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import glob
 import os
+from cryptography.fernet import Fernet
 from fawkes.protection import Fawkes
 from stego_lsb import LSBSteg
+from PIL import Image
 
 def gen_paths(paths,suffix,form=None):
     output=[0 for i in range(len(paths))]
@@ -13,6 +15,12 @@ def gen_paths(paths,suffix,form=None):
         for i in range(len(paths)):
             output[i]='{}_{}.{}'.format('.'.join(paths[i].split('.')[:-1]),suffix,form)
     return output
+
+def gen_key():
+    key=Fernet.generate_key()
+    with open('key','wb+') as f:
+        f.write(key)
+    return key
 
 def proccess_pic(input_path,method,cloaked_paths=None):
     if method == 'fawkes':
@@ -27,39 +35,79 @@ def proccess_pic(input_path,method,cloaked_paths=None):
                                  ,separate_target=False,debug=False,no_align=False)
         return image_paths,cloaked_paths
 
-def hide_files(original_paths,cloaked_files,output_paths=None):
+def hide_files(original_paths,cloaked_files,key=None,output_paths=None):
     if output_paths==None:
         output_paths=gen_paths(original_paths,'sealed','png')
-    n=0
-    for i in range(len(original_paths)):
-        #LSBSteg.analysis(cloaked_files[i],original_paths[i],2)
-        LSBSteg.hide_data(cloaked_files[i],original_paths[i],output_paths[i],2,1)
-        n+=1
+    if key==None:
+        n=0
+        for i in range(len(original_paths)):
+            #LSBSteg.analysis(cloaked_files[i],original_paths[i],2)
+            LSBSteg.hide_data(cloaked_files[i],original_paths[i],output_paths[i],2,1)
+            n+=1
+    else:
+        if not os.path.exists(key):
+            key=gen_key()
+            n,encr=0,Fernet(key)
+            for i in range(len(original_paths)):
+                #LSBSteg.analysis(cloaked_files[i],original_paths[i],2)
+                with open(original_paths[i],'wb+') as f:
+                    image=Image.open(cloaked_files[i])
+                    encrypt_file=encr.encrypt(f.read())
+                    image=LSBSteg.hide_message_in_image(image,encrypt_file,2)
+                    is_animated=getattr(image,"is_animated",False)
+                    image.save(output_paths[i],compress_level=1,save_all=is_animated)
+                n+=1
+        else:
+            with open(key,'rb+') as f:
+                key=f.read()
+            n,encr=0,Fernet(key)
+            for i in range(len(original_paths)):
+                #LSBSteg.analysis(cloaked_files[i],original_paths[i],2)
+                with open(original_paths[i],'rb+') as f:
+                    image=Image.open(cloaked_files[i])
+                    encrypt_file=encr.encrypt(f.read())
+                    image=LSBSteg.hide_message_in_image(image,encrypt_file,2)
+                    is_animated=getattr(image,"is_animated",False)
+                    image.save(output_paths[i],compress_level=1,save_all=is_animated)
+                n+=1
     print('Hide {} files susccessfully!'.format(n))
     return output_paths
 
-def recover_files(sealed_paths,recover_paths=None):
+def recover_files(sealed_paths,key=None,recover_paths=None):
     if recover_paths==None:
         recover_paths=gen_paths(sealed_paths,'recovered','jpeg')
-    n=0
-    for i in range(len(sealed_paths)):
-        LSBSteg.recover_data(sealed_paths[i],recover_paths[i],2)
-        n+=1
+    if key==None:
+        n=0
+        for i in range(len(sealed_paths)):
+            LSBSteg.recover_data(sealed_paths[i],recover_paths[i],2)
+            n+=1
+    else:
+        with open(key,'rb+') as f:
+            key=f.read()
+        n,encr=0,Fernet(key)
+        for i in range(len(sealed_paths)):
+            steg_image,output_file=LSBSteg.prepare_recover(sealed_paths[i],recover_paths[i])
+            encrypted_file=LSBSteg.recover_message_from_image(sealed_paths[i],2)
+            decrypted_file=encr.decrypt(encrypted_file)
+            output_file.write(decrypted_file)
+            output_file.close()
+            n+=1
     print('Recover {} files susccessfully!'.format(n))
     return recover_paths
 
-def test(paths,method='fawkes',clean=False):
+def test(paths=r'images',method='fawkes',key=r'key',clean=False):
         original_paths,cloaked_paths=proccess_pic(paths,method)
-        sealed_paths=hide_files(original_paths,cloaked_paths)
-        recovered_paths=recover_files(sealed_paths)
+        sealed_paths=hide_files(original_paths,cloaked_paths,key)
+        recovered_paths=recover_files(sealed_paths,key)
         if clean:
             cache_files=cloaked_paths+sealed_paths+recovered_paths
             for f in cache_files:
                 try:
                     os.remove(f)
                 except:
-                    pass
+                    print('cannot delete {}'.format(f))
             print('Clean done!')
+            print('Test finished!')
 
 if __name__=='__main__':
-    test(r'D:\Downloads\京东算法\images','fawkes',True)
+    test(r'images','fawkes',r'key',True)
