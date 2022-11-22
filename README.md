@@ -79,3 +79,5 @@ You will get 3 new kinds of images. The images ended by _cloaked are the origina
 
 # Summary
 antiAI can help users protect their pravicy against AI recognitions. Users can save images ended by _sealed in their devices and can recover the original images whenever they want. An unauthorized visitor can only reach the cloaked images and will never reach the original images.
+
+All images in images/ can be used for reference only.
